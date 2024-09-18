@@ -9,8 +9,8 @@ import {DevOpsTools} from "lib/foundry-devops/src/DevOpsTools.sol";
 
 contract SubscriptionFactory is Script{
   function createSubscriptionUsingConfig() public returns (uint256 subscriptionId, address vrfCoordinator) {
-    HelperConfig helperConfig = new HelperConfig();
-    address vrfCoordinator = helperConfig.getConfig().vrfCoordinator;
+    // HelperConfig helperConfig = new HelperConfig();
+    // address vrfCoordinator = helperConfig.getConfig().vrfCoordinator;
     subscriptionId = createSubscription(vrfCoordinator);
   }
 

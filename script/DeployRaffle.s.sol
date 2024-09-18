@@ -8,7 +8,7 @@ import {SubscriptionFactory, FundSubscription, AddConsumer} from "script/Interac
 
 contract DeployRaffle is Script {
     function run() public {
-      deployContract();
+        deployContract();
     }
 
     function deployContract() public returns (Raffle, HelperConfig) {
@@ -17,17 +17,14 @@ contract DeployRaffle is Script {
         HelperConfig.NetworkConfig memory networkConfig = helperConfig.getConfig();
         address account = networkConfig.account;
         if (networkConfig.subscriptionId == 0) {
-          // Create a subscription
-          SubscriptionFactory subscriptionFactory = new SubscriptionFactory();
-          networkConfig.subscriptionId = subscriptionFactory.createSubscription(networkConfig.vrfCoordinator, account);
-          // Fund the subscription
-          FundSubscription fundSubscription = new FundSubscription();
-          fundSubscription.fundSubscription(
-            networkConfig.vrfCoordinator,
-            networkConfig.subscriptionId,
-            networkConfig.linkToken,
-            account
-          );
+            // Create a subscription
+            SubscriptionFactory subscriptionFactory = new SubscriptionFactory();
+            networkConfig.subscriptionId = subscriptionFactory.createSubscription(networkConfig.vrfCoordinator, account);
+            // Fund the subscription
+            FundSubscription fundSubscription = new FundSubscription();
+            fundSubscription.fundSubscription(
+                networkConfig.vrfCoordinator, networkConfig.subscriptionId, networkConfig.linkToken, account
+            );
         }
 
         vm.startBroadcast(helperConfig.getConfig().account);

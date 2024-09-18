@@ -27,6 +27,7 @@ contract HelperConfig is Script, CodeConstants {
         uint32 callbackGasLimit;
         uint256 subscriptionId;
         address linkToken;
+        address account;
     }
 
     NetworkConfig public localNetworkConfig;
@@ -54,7 +55,8 @@ contract HelperConfig is Script, CodeConstants {
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae,
             callbackGasLimit: 500000,
             subscriptionId: 70048677588505135768789225262774943561258852680255810008503111549892075627639,
-            linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789
+            linkToken: 0x779877A7B0D9E8603169DdbD7836e478b4624789,
+            account: 0xA6806b6558301D94f870273a29E9c1212056FA2b
         });
     }
 
@@ -74,7 +76,8 @@ contract HelperConfig is Script, CodeConstants {
             gasLane: 0x787d74caea10b2b357790d5b5247c2f63d1d91572a9846f780606e4d953677ae, // doesn't matter
             callbackGasLimit: 500000,
             subscriptionId: 0, // may be to fix this
-            linkToken: address(linkToken) // doesn't matter
+            linkToken: address(linkToken), // doesn't matter
+            account: DEFAULT_SENDER
         });
 
         return localNetworkConfig;
